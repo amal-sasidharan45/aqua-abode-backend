@@ -18,7 +18,7 @@ exports.booking = async (req, res) => {
     const boat = await Boat.findOne({ id: id });
 
     if (!user) {
-      return res.status(404).json('User not found');
+      return res.status(404).json('Please provide your Registered Email');
     }
 
     if (!boat) {
