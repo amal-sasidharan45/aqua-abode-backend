@@ -26,10 +26,15 @@ exports.booking = async (req, res) => {
     }
 
     const booking = await Booking.findOne({ email, boatid, Checkindate, Checkoutdate });
+    console.log(booking);
+    
 
     if (booking) {
       return res.status(401).json('Boat is already booked');
     }
+    else{
+
+
 
     const notavlbledate = await Booking.findOne({ boatid });
 
@@ -72,9 +77,12 @@ exports.booking = async (req, res) => {
 
     await newBooking.save();
     res.status(200).json('Booking successful');
+    
+  }
   } catch (error) {
     res.status(500).json(error);
   }
+  
 };
 
 
