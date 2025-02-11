@@ -12,7 +12,7 @@ exports.register=async (req,res)=>{
         console.log(user);
         
         if(user){
-           res.status(401).json('user already exist ')
+           res.status(401).json('User already exist ')
         
 
         }
@@ -44,7 +44,7 @@ exports.login=async(req,res)=>{
         if(loginuser){
             const token=jwt.sign({loginpassword:password},'keykey')
             console.log(token);
-      return res.status(200).json({ message: 'Login successfull',status:200, token,username});
+      return res.status(200).json({ message: 'Login successful ',status:200, token,username});
          
        
 
