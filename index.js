@@ -5,7 +5,6 @@ require('dotenv').config()
 require('./db/connection')
 
 const express=require('express')
-const cors=require('cors')
 
 const router =require('./routes/routes')
 
@@ -15,9 +14,17 @@ const server=express()
 
 const port=5000
 
+server.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    );
+    next();
+  });
 
 
-server.use(cors())
 
 server.use(express.json())
 
