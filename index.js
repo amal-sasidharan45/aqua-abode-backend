@@ -14,16 +14,13 @@ const server=express()
 
 const port=5000
 
-server.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-    );
-    next();
-  });
-
+server.use(
+    cors({
+      origin: 'https://aqua-abode-by-amal.netlify.app', 
+      methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'verify-token'], 
+    })
+  );
 
 
 server.use(express.json())
